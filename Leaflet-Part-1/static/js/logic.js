@@ -46,12 +46,11 @@ d3.json(earthquakesURL, function(earthquakeData) {
     }
   }
 
-  // Create a GeoJSON layer containing the features array
-  // Each feature a popup describing the place and time of the earthquake
+  
   L.geoJSON(earthquakeData, {
     pointToLayer: function (feature, latlng) {
       return L.circleMarker(latlng, 
-        // Set the style of the markers based on properties.mag
+        
         {
           radius: markerSize(feature.properties.mag),
           fillColor: chooseColor(feature.geometry.coordinates[2]),
@@ -70,7 +69,7 @@ d3.json(earthquakesURL, function(earthquakeData) {
   
   earthquakes.addTo(myMap);
 
-    // Add legend
+    
   var legend = L.control({position: "bottomright"});
   legend.onAdd = function() {
     var div = L.DomUtil.create("div", "info legend"),
